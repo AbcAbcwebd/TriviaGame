@@ -1,4 +1,8 @@
 var questionCount = 0;
+var status;
+var currentQuiz;
+var timer;
+var countdown;
 
 // This defines how the quiz objects will be structured. 
 function quiz(name, questions, background) {
@@ -39,6 +43,7 @@ function loadGame(quiz) {
 
 // This functionality powers the individual questions. 
 function runQuestion(quiz, ques){
+	currentQuiz = quiz;
 	$('#question').text(quiz.questions[ques].question);
 
 	//This populates the questions
@@ -47,30 +52,66 @@ function runQuestion(quiz, ques){
 	$('#choice-3').text(quiz.questions[ques].choices[2]);
 	$('#choice-4').text(quiz.questions[ques].choices[3]);
 
-	setTimeout(endQuestion, 15000)
+	timer = setTimeout(outOfTime, 15500)
 
 	// Functionality to display time. 
 	var timeLeft = 15;
-	setInterval(function(){
+	countdown = setInterval(function(){
 		timeLeft--;
 		if (timeLeft < 10){
 			timeLeft = "0" + timeLeft;
 		}
-		$('#time-left').text("0:" + timeLeft);
+		$('#time-update').text("0:" + timeLeft);
 	}, 1000);	
 
+}
+
+function outOfTime(){
+	alert("Sorry, you're out of time!");
+	status = "outtime"
+	endQuestion();
 }
 
 // On click functionality
 $(document).ready(function(){
 
-//	$('#choice-1').click(endQuestion(0));
-	$("#choice-1").click(function(){ 
-		console.log("clicked")
+	$(".choice").click(function(){ 
+		var clickedElement = this;
+		var elementValue = clickedElement.getAttribute("value");
+	//	console.log(currentQuiz.questions[questionCount].correct);
+		if ( elementValue == currentQuiz.questions[questionCount].correct) {
+			// Player answered the question correctly
+			status = "correct"
+		} else {
+			// Player answered incorrectly
+			status = "incorrect"
+		}
+		endQuestion();
 	});
 });
 
-function endQuestion(num){
-	console.log(num);
-//	console.log("Question ended.")
+// What happens once the question ends. 
+function endQuestion(){
+	// Clears out the timers. 
+	clearTimeout(timer);
+	clearInterval(countdown);
+	$('#time-update').text("0:00");
+
+	// Updates display depending on whether user what right, wrong, or slow.
+	if (status === "correct"){
+		$('#question').text("That's correct!");
+	} else if (status === "incorrect") {
+		$('#question').text("Incorrect.");
+	} else if (status === "outtime"){
+		$('#question').text("Out of time.");
+	}
+
+	// Displays the correct answer. 
+	var correctIndex = currentQuiz.questions[questionCount].correct;
+	$('#choice-1').text("The answer was " + currentQuiz.questions[questionCount].choices[correctIndex] + ".");
+	$('#choice-2').empty();
+	$('#choice-3').empty();
+	$('#choice-4').empty();
+	console.log(currentQuiz.questions[questionCount].endImage);
+	$('body').append("<img src='assets/images/" + currentQuiz.questions[questionCount].endImage + "' id='answer-image'>");
 }
