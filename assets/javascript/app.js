@@ -3,6 +3,9 @@ var status;
 var currentQuiz;
 var timer;
 var countdown;
+var correct = 0;
+var incorrect = 0;
+var interQuestion;
 
 // This defines how the quiz objects will be structured. 
 function quiz(name, questions, background) {
@@ -69,6 +72,7 @@ function runQuestion(quiz, ques){
 function outOfTime(){
 	alert("Sorry, you're out of time!");
 	status = "outtime"
+	incorrect++;
 	endQuestion();
 }
 
@@ -82,9 +86,11 @@ $(document).ready(function(){
 		if ( elementValue == currentQuiz.questions[questionCount].correct) {
 			// Player answered the question correctly
 			status = "correct"
+			correct++;
 		} else {
 			// Player answered incorrectly
 			status = "incorrect"
+			incorrect++;
 		}
 		endQuestion();
 	});
@@ -114,4 +120,13 @@ function endQuestion(){
 	$('#choice-4').empty();
 	console.log(currentQuiz.questions[questionCount].endImage);
 	$('body').append("<img src='assets/images/" + currentQuiz.questions[questionCount].endImage + "' id='answer-image'>");
+
+	// This prepares for the next question
+	questionCount++
+	interQuestion = setTimeout(initNext, 2000);
+}
+
+function initNext(){
+	$('#answer-image').remove();
+	runQuestion(currentQuiz, questionCount);
 }
