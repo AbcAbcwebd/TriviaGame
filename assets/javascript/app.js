@@ -25,10 +25,10 @@ function loadGame(quiz) {
 	$('body').append("<p id='time-left'>Time remaining: <span id='time-update'></span></p>");
 	$('body').append("<p id='question'></p>");
 	$('body').append("<div id='choices'></div>");
-	$("#choices").append("<p id='choice-1' class='choice'></p>");
-	$("#choices").append("<p id='choice-2' class='choice'></p>");
-	$("#choices").append("<p id='choice-3' class='choice'></p>");
-	$("#choices").append("<p id='choice-4' class='choice'></p>");
+	$("#choices").append("<p id='choice-1' class='choice' value='0'></p>");
+	$("#choices").append("<p id='choice-2' class='choice' value='1'></p>");
+	$("#choices").append("<p id='choice-3' class='choice' value='2'></p>");
+	$("#choices").append("<p id='choice-4' class='choice' value='3'></p>");
 
 	// This loops through the questions and runs each of them.
 	for (var i = 0; i < quiz.questions.length; i++){
@@ -37,8 +37,15 @@ function loadGame(quiz) {
 
 }
 
+// This functionality powers the individual questions. 
 function runQuestion(quiz, ques){
 	console.log(quiz.questions[ques].question);
 	$('#question').text(quiz.questions[ques].question);
+
+	//This populates the questions
+	$('#choice-1').text(quiz.questions[ques].choices[0]);
+	$('#choice-2').text(quiz.questions[ques].choices[1]);
+	$('#choice-3').text(quiz.questions[ques].choices[2]);
+	$('#choice-4').text(quiz.questions[ques].choices[3]);
 
 }
