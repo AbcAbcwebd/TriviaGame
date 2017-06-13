@@ -47,10 +47,25 @@ function runQuestion(quiz, ques){
 	$('#choice-3').text(quiz.questions[ques].choices[2]);
 	$('#choice-4').text(quiz.questions[ques].choices[3]);
 
-	setTimeout(endQuestion, 1000)
+	setTimeout(endQuestion, 15000)
+
+	// Functionality to display time. 
+	var timeLeft = 15;
+	setInterval(function(){
+		timeLeft--;
+		if (timeLeft < 10){
+			timeLeft = "0" + timeLeft;
+		}
+		$('#time-left').text("0:" + timeLeft);
+	}, 1000);	
 
 }
 
+// On click functionality
+$(document).ready(function(){
+	$('.choice').click(endQuestion);
+});
+
 function endQuestion(){
-	console.log("End question");
+	console.log("Question ended.")
 }
