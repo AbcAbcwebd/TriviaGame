@@ -63,9 +63,14 @@ function runQuestion(quiz, ques){
 
 // On click functionality
 $(document).ready(function(){
-	$('.choice').click(endQuestion);
+
+//	$('#choice-1').click(endQuestion(0));
+	$("#choice-1").click(function(){ 
+		console.log("clicked")
+	});
 });
 
-function endQuestion(){
-	console.log("Question ended.")
+function endQuestion(num){
+	console.log(num);
+//	console.log("Question ended.")
 }
