@@ -1,3 +1,5 @@
+var questionCount = 0;
+
 // This defines how the quiz objects will be structured. 
 function quiz(name, questions, background) {
 	    this.name = name;
@@ -30,16 +32,13 @@ function loadGame(quiz) {
 	$("#choices").append("<p id='choice-3' class='choice' value='2'></p>");
 	$("#choices").append("<p id='choice-4' class='choice' value='3'></p>");
 
-	// This loops through the questions and runs each of them.
-	for (var i = 0; i < quiz.questions.length; i++){
-		runQuestion(quiz, i)
-	}
+	// This initiates the first question. 
+	runQuestion(quiz, questionCount)
 
 }
 
 // This functionality powers the individual questions. 
 function runQuestion(quiz, ques){
-	console.log(quiz.questions[ques].question);
 	$('#question').text(quiz.questions[ques].question);
 
 	//This populates the questions
@@ -48,4 +47,10 @@ function runQuestion(quiz, ques){
 	$('#choice-3').text(quiz.questions[ques].choices[2]);
 	$('#choice-4').text(quiz.questions[ques].choices[3]);
 
+	setTimeout(endQuestion, 1000)
+
+}
+
+function endQuestion(){
+	console.log("End question");
 }
