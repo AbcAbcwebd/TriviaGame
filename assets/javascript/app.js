@@ -210,8 +210,6 @@ function endGame(){
 	});	
 
 	$("#endChoice-3").click(function(){ 
-		//console.log(currentQuiz.link);
-		//window.location.replace(currentQuiz.link);
 		window.open(currentQuiz.link,'_blank');
 	});	
 }
