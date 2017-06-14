@@ -8,6 +8,8 @@ var incorrect = 0;
 var interQuestion;
 var theEnd;
 
+//var endEarly = endGame();
+
 // This defines how the quiz objects will be structured. 
 function quiz(name, questions, background, finalImage, link) {
 	    this.name = name;
@@ -79,13 +81,32 @@ function outOfTime(){
 	endQuestion();
 }
 
+// Returns game to starting state
+function resetGame(){
+	// Resets variables
+	questionCount = 0;
+	correct = 0;
+	incorrect = 0;
+
+	// Clears document
+//	$('body').empty();
+	$('#time-left').html("Time remaining: <span id='time-update'></span>");
+	$('#endChoice-1').remove();
+	$('#endChoice-2').remove();
+	$('#endChoice-3').remove();
+	$('#final-image').remove();
+
+	// Loads the new game with the same quiz object
+//	loadGame(currentQuiz);
+	runQuestion(currentQuiz, questionCount)
+}
+
 // On click functionality
 $(document).ready(function(){
 
 	$(".choice").click(function(){ 
 		var clickedElement = this;
 		var elementValue = clickedElement.getAttribute("value");
-	//	console.log(currentQuiz.questions[questionCount].correct);
 		if ( elementValue == currentQuiz.questions[questionCount].correct) {
 			// Player answered the question correctly
 			status = "correct"
@@ -97,6 +118,22 @@ $(document).ready(function(){
 		}
 		endQuestion();
 	});
+
+	// Click functionality for the end of game page.
+//	$("#endChoice-1").click(function(){ 
+//		console.log("Click 1 running");
+//		loadGame();
+//	});	
+
+	$("#endChoice-2").click(function(){ 
+		console.log("Click 2 running");
+		window.location.replace('index.html');
+
+	});	
+
+	$(".choice").click(function(){ 
+
+	});	
 });
 
 // What happens once the question ends. 
@@ -143,10 +180,14 @@ function initNext(){
 }
 
 function endGame(){
+	// Ensures no time functionality is running.
+	clearTimeout(timer);
+	clearInterval(countdown);
+
+	// Asseses score
 	var totalQuestions = correct + incorrect;
 	var percentCorrect = correct / totalQuestions;
 	$('#time-left').text("You got " + correct + " out of " + totalQuestions + " correct.");
-	console.log(percentCorrect);
 	if (percentCorrect > 0.9){
 		status = "Wow, you know this stuff really well!";
 	} else if (percentCorrect > 0.8) {
@@ -162,7 +203,7 @@ function endGame(){
 	}
 	$('#question').text(status);
 
-	$('body').append("<img src='assets/images/" + currentQuiz.finalImage + "'>");
+	$('body').append("<img src='assets/images/" + currentQuiz.finalImage + "' id='final-image'>");
 
 	// This offers possible next steps
 	$('#ansDisp').remove();
@@ -171,7 +212,11 @@ function endGame(){
 	$('#choice-2').empty();
 	$('#choice-3').empty();
 	$('#choice-4').empty();
-	$("#choices").append("<p id='endChoice-1' class='choice' value='0'>Try again</p>");
-	$("#choices").append("<p id='endChoice-2' class='choice' value='1'>Take a different quiz</p>");
-	$("#choices").append("<p id='endChoice-3' class='choice' value='2'>Learn more about this subject</p>");
+	$("#choices").append("<p id='endChoice-1' class='end-choice'>Try again</p>");
+	$("#choices").append("<p id='endChoice-2' class='end-choice'>Take a different quiz</p>");
+	$("#choices").append("<p id='endChoice-3' class='end-choice'>Learn more about this subject</p>");
+
+	$("#endChoice-1").click(function(){ 
+		resetGame();
+	});	
 }
