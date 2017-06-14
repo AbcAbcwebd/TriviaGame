@@ -43,6 +43,10 @@ function loadGame(quiz) {
 	$("#choices").append("<p id='choice-2' class='choice' value='1'></p>");
 	$("#choices").append("<p id='choice-3' class='choice' value='2'></p>");
 	$("#choices").append("<p id='choice-4' class='choice' value='3'></p>");
+	backgroundImage = "url(assets/images/" + quiz.background + ")"
+	console.log(backgroundImage);
+//	$('body').css("background", backgroundImage);
+	$('body').prepend("<div id='background-cover'></div>");
 
 	// This initiates the first question. 
 	runQuestion(quiz, questionCount)
@@ -75,7 +79,7 @@ function runQuestion(quiz, ques){
 }
 
 function outOfTime(){
-	alert("Sorry, you're out of time!");
+//	alert("Sorry, you're out of time!");
 	status = "outtime"
 	incorrect++;
 	endQuestion();

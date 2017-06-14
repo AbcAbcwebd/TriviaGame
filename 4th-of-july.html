@@ -7,30 +7,30 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 	<script src="assets/javascript/app.js"></script>
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link href="https://fonts.googleapis.com/css?family=Orbitron|Pathway+Gothic+One" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
-	<script>
+		<script>
 
-	// This defines the quiz questions
-	var firstSign = new ask("Who was the first person to sign the Decleration of Independence?", ["Benjamin Franklin", "George Washington", "John Hancock", "John Adams"], 2, "hancock.jpg");
-	var YoungestSign = new ask("How old was the youngest signer of the Decleration of Independence?", ["56", "34", "16", "26"], 3, "rutledge.gif");
-	var tofu = new ask("Which founding father introduced tofu to America?", ["Sam Adams", "Thomas Jefferson", "Paul Revere", "Benjamin Franklin"], 3, "franklin.jpg");
-	var theif = new ask("Thomas Jefferson and John Adams once stole peices of this famous person's chair.", ["William Shakespeare", "William Penn", "Herman Melville", "Sir Walter Raleigh"], 0, "shakespeare.jpg");
-	var debt = new ask("For what does George Washington currently owe over $300,000?", ["Reperations for owning slaves", "Unpaid income tax", "Debts to finance revolutionary war", "Overdue library fines"], 3, "library.jpg");
-	var beer = new ask("Which early American is the face of Samuel Adams beer?", ["Sam Adams", "Benjamin Franklin", "Patrick Henry", "Paul Revere"], 3, "revere-adams.jpg");
-	var independence = new ask("What other countries celebrate their independence on the 4th of July?", ["The Phillipines and Rwanda", "France and Morocco", "Kyrgyzstan and Laos", "Benin and San Marino"], 0, "philippines.jpg");
-	var flagAdopted = new ask("What year was the current 50-star flag adopted?", ["1879", "1928", "1947", "1958"], 3, "50s-car.jpg");
-	var flagDesigner = new ask("Who designed the current 50-star flag?", ["Hitchcock movie poster designer Saul Bass", "Rolling Stones art designer Stefan Sagmeister", "Fine art painter and fraudster Walter Keane", "17 Year Old High School Student Robert Heft"], 3, "robert-heft.jpg");
-	var whiteParty = new ask("What year was the first White House July 4th party?", ["1789", "1801", "1836", "1920"], 1, "white-house-old.jpg");
+		// This defines the quiz questions
+		var firstSign = new ask("Who was the first person to sign the Decleration of Independence?", ["Benjamin Franklin", "George Washington", "John Hancock", "John Adams"], 2, "hancock.jpg");
+		var YoungestSign = new ask("How old was the youngest signer of the Decleration of Independence?", ["56", "34", "16", "26"], 3, "rutledge.gif");
+		var tofu = new ask("Which founding father introduced tofu to America?", ["Sam Adams", "Thomas Jefferson", "Paul Revere", "Benjamin Franklin"], 3, "franklin.jpg");
+		var theif = new ask("Thomas Jefferson and John Adams once stole peices of this famous person's chair.", ["William Shakespeare", "William Penn", "Herman Melville", "Sir Walter Raleigh"], 0, "shakespeare.jpg");
+		var debt = new ask("For what does George Washington currently owe over $300,000?", ["Reperations for owning slaves", "Unpaid income tax", "Debts to finance revolutionary war", "Overdue library fines"], 3, "library.jpg");
+		var beer = new ask("Which early American is the face of Samuel Adams beer?", ["Sam Adams", "Benjamin Franklin", "Patrick Henry", "Paul Revere"], 3, "revere-adams.jpg");
+		var independence = new ask("What other countries celebrate their independence on the 4th of July?", ["The Phillipines and Rwanda", "France and Morocco", "Kyrgyzstan and Laos", "Benin and San Marino"], 0, "philippines.jpg");
+		var flagAdopted = new ask("What year was the current 50-star flag adopted?", ["1879", "1928", "1947", "1958"], 3, "50s-car.jpg");
+		var flagDesigner = new ask("Who designed the current 50-star flag?", ["Hitchcock movie poster designer Saul Bass", "Rolling Stones art designer Stefan Sagmeister", "Fine art painter and fraudster Walter Keane", "17 Year Old High School Student Robert Heft"], 3, "robert-heft.jpg");
+		var whiteParty = new ask("What year was the first White House July 4th party?", ["1789", "1801", "1836", "1920"], 1, "white-house-old.jpg");
 
-	// This defines the new quiz
-	var fourJuly = new quiz("4th of July Trivia", [firstSign, YoungestSign, tofu, theif, debt, beer, independence, flagAdopted, flagDesigner, whiteParty], "flag.jpg", "eagle.jpg", "https://en.wikipedia.org/wiki/Independence_Day_(United_States)");
+		// This defines the new quiz
+		var fourJuly = new quiz("4th of July Trivia", [firstSign, YoungestSign, tofu, theif, debt, beer, independence, flagAdopted, flagDesigner, whiteParty], "flag.jpg", "eagle.jpg", "https://en.wikipedia.org/wiki/Independence_Day_(United_States)");
 
 
-	loadGame(fourJuly);
+		loadGame(fourJuly);
 
-	</script>
-
+		</script>
 </body>
 </html>
