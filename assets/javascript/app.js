@@ -6,12 +6,15 @@ var countdown;
 var correct = 0;
 var incorrect = 0;
 var interQuestion;
+var theEnd;
 
 // This defines how the quiz objects will be structured. 
-function quiz(name, questions, background) {
+function quiz(name, questions, background, finalImage, link) {
 	    this.name = name;
 	    this.questions = questions;
 	    this.background = background;
+	    this.finalImage = finalImage;
+	    this.link = link;
 	}
 
 // This defines how the ask (question) objects will be structured. 
@@ -114,19 +117,61 @@ function endQuestion(){
 
 	// Displays the correct answer. 
 	var correctIndex = currentQuiz.questions[questionCount].correct;
-	$('#choice-1').text("The answer was " + currentQuiz.questions[questionCount].choices[correctIndex] + ".");
+	$('#choice-1').empty();
 	$('#choice-2').empty();
 	$('#choice-3').empty();
 	$('#choice-4').empty();
-	console.log(currentQuiz.questions[questionCount].endImage);
+
+	$("#choices").append("<p id='ansDisp'></p>");
+	$('#ansDisp').text("The answer was " + currentQuiz.questions[questionCount].choices[correctIndex] + ".");
 	$('body').append("<img src='assets/images/" + currentQuiz.questions[questionCount].endImage + "' id='answer-image'>");
 
-	// This prepares for the next question
-	questionCount++
-	interQuestion = setTimeout(initNext, 2000);
+	// Checks to see if the quiz should end.
+	if (questionCount + 1 != currentQuiz.questions.length){
+		// This prepares for the next question
+		questionCount++
+		interQuestion = setTimeout(initNext, 2000);
+	} else {
+		theEnd = setTimeout(endGame, 2000);
+	}
 }
 
 function initNext(){
+	$('#ansDisp').remove();
 	$('#answer-image').remove();
 	runQuestion(currentQuiz, questionCount);
+}
+
+function endGame(){
+	var totalQuestions = correct + incorrect;
+	var percentCorrect = correct / totalQuestions;
+	$('#time-left').text("You got " + correct + " out of " + totalQuestions + " correct.");
+	console.log(percentCorrect);
+	if (percentCorrect > 0.9){
+		status = "Wow, you know this stuff really well!";
+	} else if (percentCorrect > 0.8) {
+		status = "Not bad. This is a good subject for you.";
+	} else if (percentCorrect > 0.7) {
+		status = "Well, you're not an embarassment, but don't quit your day job.";
+	} else if (percentCorrect > 0.6) {
+		status = "You should probably read up on this more....";
+	} else if (percentCorrect > 0.2) {
+		status = "I've seen worse, believe it or not....";
+	} else {
+		status = "You suck!";
+	}
+	$('#question').text(status);
+
+	$('body').append("<img src='assets/images/" + currentQuiz.finalImage + "'>");
+
+	// This offers possible next steps
+	$('#ansDisp').remove();
+	$('#answer-image').remove();
+	$('#choice-1').empty();
+	$('#choice-2').empty();
+	$('#choice-3').empty();
+	$('#choice-4').empty();
+	$("#choices").append("<p id='endChoice-1' class='choice' value='0'>Try again</p>");
+	$("#choices").append("<p id='endChoice-2' class='choice' value='1'>Take a different quiz</p>");
+	$("#choices").append("<p id='endChoice-3' class='choice' value='2'>Learn more about this subject</p>");
 }
