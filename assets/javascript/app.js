@@ -88,8 +88,7 @@ function resetGame(){
 	correct = 0;
 	incorrect = 0;
 
-	// Clears document
-//	$('body').empty();
+	// Resets document
 	$('#time-left').html("Time remaining: <span id='time-update'></span>");
 	$('#endChoice-1').remove();
 	$('#endChoice-2').remove();
@@ -119,21 +118,6 @@ $(document).ready(function(){
 		endQuestion();
 	});
 
-	// Click functionality for the end of game page.
-//	$("#endChoice-1").click(function(){ 
-//		console.log("Click 1 running");
-//		loadGame();
-//	});	
-
-	$("#endChoice-2").click(function(){ 
-		console.log("Click 2 running");
-		window.location.replace('index.html');
-
-	});	
-
-	$(".choice").click(function(){ 
-
-	});	
 });
 
 // What happens once the question ends. 
@@ -218,5 +202,16 @@ function endGame(){
 
 	$("#endChoice-1").click(function(){ 
 		resetGame();
+	});	
+
+	$("#endChoice-2").click(function(){ 
+		window.location.replace('index.html');
+
+	});	
+
+	$("#endChoice-3").click(function(){ 
+		//console.log(currentQuiz.link);
+		//window.location.replace(currentQuiz.link);
+		window.open(currentQuiz.link,'_blank');
 	});	
 }
