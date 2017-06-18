@@ -8,9 +8,15 @@
 		}
 
 var fourOJuly = new quizOpt("4th of July", "uncle-sam-hat.png", "4th-of-july.html");
+var movies = new quizOpt("Movies", "camera.png", "movies.html");
+var spaceTravel = new quizOpt("Space Travel", "moon.png", "space-travel.html");
 
-var optionsArray = [fourOJuly];
+var optionsArray = [fourOJuly, movies, spaceTravel];
 
 function loadDisplay(){
+	for (var i = 0; i < optionsArray.length; i++){
+		$('#quiz-option-display').append("<div></div>").attr('id','display' + i);
+		$('#display0').html("<p>Working</p>")
+	}
 	
 }
