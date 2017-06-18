@@ -99,9 +99,15 @@ function resetGame(){
 	$('#endChoice-3').remove();
 	$('#final-image').remove();
 
+	// Re-shows the HTML elements that will contain the choices. 
+	$('#choice-1').show();
+	$('#choice-2').show();
+	$('#choice-3').show();
+	$('#choice-4').show();
+
 	// Loads the new game with the same quiz object
 //	loadGame(currentQuiz);
-	runQuestion(currentQuiz, questionCount)
+	runQuestion(currentQuiz, questionCount);
 }
 
 // On click functionality
@@ -142,10 +148,10 @@ function endQuestion(){
 
 	// Displays the correct answer. 
 	var correctIndex = currentQuiz.questions[questionCount].correct;
-	$('#choice-1').empty();
-	$('#choice-2').empty();
-	$('#choice-3').empty();
-	$('#choice-4').empty();
+	$('#choice-1').hide();
+	$('#choice-2').hide();
+	$('#choice-3').hide();
+	$('#choice-4').hide();
 
 	$("#choices").append("<p id='ansDisp'></p>");
 	$('#ansDisp').text("The answer was " + currentQuiz.questions[questionCount].choices[correctIndex] + ".");
@@ -161,10 +167,20 @@ function endQuestion(){
 	}
 }
 
+// This prepares the program to display the next question. 
+// This contains all code that does not to be executed before the first qustion, but that should be executed before subsequent questions. 
+// This in runs the function to display the question. 
 function initNext(){
 	$('#ansDisp').remove();
 	$('#answer-image').remove();
+
+	$('#choice-1').show();
+	$('#choice-2').show();
+	$('#choice-3').show();
+	$('#choice-4').show();
+
 	runQuestion(currentQuiz, questionCount);
+
 }
 
 function endGame(){
@@ -196,10 +212,10 @@ function endGame(){
 	// This offers possible next steps
 	$('#ansDisp').remove();
 	$('#answer-image').remove();
-	$('#choice-1').empty();
-	$('#choice-2').empty();
-	$('#choice-3').empty();
-	$('#choice-4').empty();
+	$('#choice-1').hide();
+	$('#choice-2').hide();
+	$('#choice-3').hide();
+	$('#choice-4').hide();
 	$("#choices").append("<p id='endChoice-1' class='end-choice'>Try again</p>");
 	$("#choices").append("<p id='endChoice-2' class='end-choice'>Take a different quiz</p>");
 	$("#choices").append("<p id='endChoice-3' class='end-choice'>Learn more about this subject</p>");

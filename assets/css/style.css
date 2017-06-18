@@ -59,3 +59,51 @@ body {
 	font-size: 25px;
 	width: 250px;
 }
+
+.end-choice:hover {
+	background: #adadd8;
+	color: #e28b38;
+	font-size: 25px;
+	width: 250px;
+}
+
+#answer-image {
+	max-width: 300px;
+	float: left;
+	margin-left: 75px;
+	padding-top: 25px;
+}
+
+#final-image {
+	max-width: 300px;
+	float: left;
+	margin-left: 75px;
+	padding-top: 25px;
+}
+
+footer {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	height: 50px;
+	
+    background: -webkit-linear-gradient(rgba(255,255,255,0),rgba(0,0,0,1)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(255,255,255,0),rgba(100,100,100,1)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(255,255,255,0),rgba(100,100,100,1)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(255,255,255,0),rgba(100,100,100,1)); /* Standard syntax */
+}
+
+@media screen and (min-width: 1024px) {
+	p {
+		float: left;
+		width: 51%;
+	}
+
+	.end-choice:hover {
+		width: 51%;
+	}
+
+	.choice:hover {
+		width: 51%;
+	}
+};
