@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Movies -- Super Trivia Game</title>
+	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+	<script src="assets/javascript/app.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link href="https://fonts.googleapis.com/css?family=Orbitron|Pathway+Gothic+One" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+		<script>
+
+		// This defines the quiz questions
+		var jaws = new ask("What did Steven Speilberg nickname the shark prop while making <em>Jaws</em>?", ["Bruce", "George", "Smiles", "Nemo"], 0, "Jaws.jpg");
+		var scarecrow = new ask("In <em>The Wizard of Oz</em>, what does the Scarecrow want from the wizard?", ["A heart", "A brain", "A spine", "Courage"], 1, "scarecrow.jpg");
+		var crowd = new ask("What TV actor starred in Elia Kazan's 1957 film <em>A Face in the Crowd</em>?", ["Lucille Ball", "Andy Griffith", "James Amess", "Robert Young"], 1, "griffith.jpg");
+		var animated = new ask("What was the first feature length animated film in history?", ["Gertie the Dinosaur", "Snow White", "Steamboat Willie", "Felix the Cat"], 1, "snow-white.jpeg");
+		var piano = new ask("What was the name of the piano player in <em>Casablanca</em>?", ["Ricky", "Abdul", "Sam", "Jack"], 2, "sam.jpg");
+		var kane = new ask("What real life individual was the basis for the title character in <em>Citizen Kane</em>?", ["Cornelius Vanderbilt", "William Randolph Hearst", "Rubert Murdoch Sr.", "John D. Rockefeller"], 1, "hearst.gif");
+		var bowie = new ask("Which of these films starred David Bowie?", ["The Labrynth", "Westworld", "Barberella", "The Song Man"], 0, "labyrinth.jpg");
+		var effects = new ask("Who is considered the father of movie special effects?", ["George Lucas", "Stanley Kuberick", "George Melies", "Jack Foley"], 2, "melies.jpg");
+		var ruined = new ask("What movie did Maria Schneider say 'ruined her life'?", ["The Passenger", "Memoirs of a French Whore", "Last Tango in Paris", "Looking for Jesus"], 2, "last-tango.jpeg");
+		var oscar = new ask("What was the first Oscar best picture winner in history?", ["The Racket", "7th Heaven", "Gone with the Wind", "Wings"], 3, "wings.jpg");
+
+		// This defines the new quiz
+		var movies = new quiz("4th of July Trivia", [jaws, scarecrow, crowd, animated, piano, kane, bowie, effects, ruined, oscar], "flag.jpg", "Movies.jpg", "http://www.imdb.com");
+
+
+		loadGame(movies);
+
+		</script>
+		<footer></footer>
+</body>
+</html>
