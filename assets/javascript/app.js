@@ -79,7 +79,7 @@ function runQuestion(quiz, ques){
 }
 
 function outOfTime(){
-//	alert("Sorry, you're out of time!");
+	alert("Sorry, you're out of time!");
 	status = "outtime"
 	incorrect++;
 	endQuestion();

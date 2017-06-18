@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Space Travel -- Super Trivia Game</title>
+	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+	<script src="assets/javascript/app.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link href="https://fonts.googleapis.com/css?family=Orbitron|Pathway+Gothic+One" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+		<script>
+
+		// This defines the quiz questions
+		var speed = new ask("How fast does a spacecraft need to accelerate to penetrate Earth's orbit?", ["750 mph", "1,700 mph", "7,000 mph", "17,000 mph"], 3, "space01.jpg");
+		var time = new ask("What 'time zone' do American astronauts use while in space?", ["Mission elapsed time", "Mission control time (Florida)", "Mission control time (California)", "Time zone of wherever spacecraft is orbiting over"], 0, "space02.jpg");
+		var step = new ask("Who was the first person to set foot on the moon?", ["John Glenn", "Neil Young", "Neil Armstrong", "Lance Armstrong"], 2, "space03.jpg");
+		var first = new ask("Who was the first human to visit space?", ["John Glenn", "Yuri Gagarin", "Buzz Aldrin", "Felix Yusupov"], 1, "space04.jpeg");
+		var shuttle = new ask("What space shuttle disintegrated in 2003 killing all seven crew members?", ["Columbia", "Challenger", "Discovery", "Endeavor"], 0, "space05.jpg");
+		var car = new ask("What kind of car was famously popular with NASA astronauts in the 1960s?", ["Ford Mustang", "Corvette", "Porsche 911", "Aston Martin"], 1, "space06.jpg");
+		var sick = new ask("How long were Neil Armstrong and Buzz Aldrin quarantined after visiting the moon?", ["7 Days", "10 Days", "15 Days", "21 Days"], 3, "space07.jpg");
+		var founder = new ask("Who is the founder of SpaceX?", ["Richard Branson", "Jeff Bezon", "Peter Theil", "Elon Musk"], 3, "space08.jpg");
+		var minimum = new ask("Which of the following is a prerequisite for even applying for NASA astronaut candidate class?", ["Scuba diving certification", "1,000 hours flying time in a jet aircraft", "Masters degree in aerospace engineering", "Being a natural born US citizen"], 1, "space09.jpg");
+		var suit = new ask("How long does it take to put on a space suit?", ["About 45 minutes", "About 30 minutes", "About an hour", "About 5 hours"], 0, "space10.jpg");
+
+		// This defines the new quiz
+		var spaceTravel = new quiz("Space Travel Trivia", [speed, time, step, first, shuttle, car, sick, founder, minimum, suit], "flag.jpg", "space-travel.jpg", "http://www.space-explorers.com/internal/events/trivia/25_things_about_space_travel.pdf");
+
+
+		loadGame(spaceTravel);
+
+		</script>
+		<footer></footer>
+</body>
+</html>
