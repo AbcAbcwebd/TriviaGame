@@ -15,8 +15,9 @@ var optionsArray = [fourOJuly, movies, spaceTravel];
 
 function loadDisplay(){
 	for (var i = 0; i < optionsArray.length; i++){
-		$('#quiz-option-display').append("<div></div>").attr('id','display' + i);
-		$('#display0').html("<p>Working</p>")
+		console.log("function running")
+		$('#quiz-option-display').append("<div class='display-element' id='display" + i +"'></div>")
+		$('.display-element').html("<p>Working</p>")
 	}
 	
 }
