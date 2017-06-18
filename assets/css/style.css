@@ -93,6 +93,51 @@ footer {
     background: linear-gradient(rgba(255,255,255,0),rgba(100,100,100,1)); /* Standard syntax */
 }
 
+.home-image {
+	max-width: 250px;
+	max-width: 90%;
+	margin-left: 12px;
+}
+
+.home-header {
+	font-family: 'Pathway Gothic One', sans-serif;
+	font-size: 30px;
+	text-align: center;
+}
+
+.display-element {
+	margin-top: 30px;
+	background: gray;
+	width: 275px;
+	max-width: 40%;
+	position: absolute;
+}
+
+/* To move a homepage display element from center spot to left spot. */
+.display-element.horizTranslate {
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  left: -15% !important;
+}
+
+/* To move a homepage display element from right spot to center spot. */
+.display-element.horizTranslate2 {
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  left: 35% !important;
+}
+
+@keyframes middle-to-left {
+    from {left: 35;}
+    to {left: 0;}
+}
+
 @media screen and (min-width: 1024px) {
 	p {
 		float: left;
