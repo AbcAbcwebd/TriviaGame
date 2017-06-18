@@ -143,10 +143,17 @@ footer {
   left: 85% !important;
 }
 
-@keyframes middle-to-left {
-    from {left: 35;}
-    to {left: 0;}
+/* To move a homepage display element from left spot to off screen. */
+.display-element.horizTranslate4 {
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  left: -45% !important;
 }
+
+
 
 @media screen and (min-width: 1024px) {
 	p {

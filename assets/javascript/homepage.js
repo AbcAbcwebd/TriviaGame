@@ -17,7 +17,6 @@ var optionsArray = [fourOJuly, movies, spaceTravel];
 // This creates a display on the homepage that allows the user to select a quiz.
 function loadDisplay(){
 	for (var i = 0; i < optionsArray.length; i++){
-		console.log("function running")
 		$('#quiz-option-display').append("<div class='display-element' id='display" + i +"'></div>")
 		$('#display' + i).html("<img class='home-image' src='assets/images/" + optionsArray[i].thumbnail + "'><h3 class='home-header'>" + optionsArray[i].name + "</h3>");
 
@@ -33,27 +32,48 @@ function loadDisplay(){
 }
 
 // Removes class from a particular HTML object
-function removeClass(class){
+function removeClass(){
+	if (optionsArray[indexSelected + 1] != null){
+		$('#display' + indexSelected).removeClass("horizTranslate");
+	};
 
+	$('#display' + (indexSelected + 1)).removeClass("horizTranslate2");
+
+	if (optionsArray[indexSelected + 2] != null){
+		$('#display' + (indexSelected + 2)).removeClass("horizTranslate3");
+	};
+
+	if (indexSelected > 0){
+		$('#display' + (indexSelected - 1)).removeClass("horizTranslate4");
+	}
+
+	// This is placed in the removeClass function because it needs to happen after the classes are removed. 
+	indexSelected++;
 }
 
 // Allows user to scroll left through quiz choices. 
 function moveLeft(){
 	if (optionsArray[indexSelected + 1] != null){
+		if (indexSelected > 0){
+		document.getElementById("display" + (indexSelected - 1)).classList.add('horizTranslate4');
+		$('#display' + (indexSelected - 1)).css("left", "-45%");
+		}
+
 		document.getElementById("display" + indexSelected).classList.add('horizTranslate');
 		$('#display' + indexSelected).css("left", "-15%");
-		$('#display' + indexSelected).removeClass("horizTranslate")
+		
 		document.getElementById("display" + (indexSelected + 1)).classList.add('horizTranslate2');
 		$('#display' + (indexSelected + 1)).css("left", "35%");
-		$('#display' + (indexSelected + 1)).removeClass("horizTranslate2");
-
+		
 
 		// If a third element is available it should be moved onto the screen.
 		if (optionsArray[indexSelected + 2] != null){
 			document.getElementById("display" + (indexSelected + 2)).classList.add('horizTranslate3');
 			$('#display' + (indexSelected + 2)).css("left", "85%");
-			$('#display' + (indexSelected + 2)).removeClass("horizTranslate3");
+			
 		}
-		indexSelected++;
+
+		classPull = setTimeout(removeClass, 600)
+
 	}
 }
