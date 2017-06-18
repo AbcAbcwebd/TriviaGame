@@ -133,6 +133,16 @@ footer {
   left: 35% !important;
 }
 
+/* To move a homepage display element from off screen spot to right spot. */
+.display-element.horizTranslate3 {
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  left: 85% !important;
+}
+
 @keyframes middle-to-left {
     from {left: 35;}
     to {left: 0;}

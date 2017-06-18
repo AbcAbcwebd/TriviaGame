@@ -23,7 +23,7 @@ function loadDisplay(){
 
 		// This hides thumbnails that a user must scroll to reach
 		if (i > 1){
-			$('#display' + i).hide();
+			$('#display' + i).css("left", "100%");
 		}
 	}
 
@@ -32,11 +32,28 @@ function loadDisplay(){
 	document.getElementById("display1").style.left = "85%";
 }
 
+// Removes class from a particular HTML object
+function removeClass(class){
+
+}
+
 // Allows user to scroll left through quiz choices. 
 function moveLeft(){
-	document.getElementById("display" + indexSelected).classList.add('horizTranslate');
-	document.getElementById("display" + (indexSelected + 1)).classList.add('horizTranslate2');
-	$('display' + (indexSelected + 2)).show();
+	if (optionsArray[indexSelected + 1] != null){
+		document.getElementById("display" + indexSelected).classList.add('horizTranslate');
+		$('#display' + indexSelected).css("left", "-15%");
+		$('#display' + indexSelected).removeClass("horizTranslate")
+		document.getElementById("display" + (indexSelected + 1)).classList.add('horizTranslate2');
+		$('#display' + (indexSelected + 1)).css("left", "35%");
+		$('#display' + (indexSelected + 1)).removeClass("horizTranslate2");
 
 
+		// If a third element is available it should be moved onto the screen.
+		if (optionsArray[indexSelected + 2] != null){
+			document.getElementById("display" + (indexSelected + 2)).classList.add('horizTranslate3');
+			$('#display' + (indexSelected + 2)).css("left", "85%");
+			$('#display' + (indexSelected + 2)).removeClass("horizTranslate3");
+		}
+		indexSelected++;
+	}
 }
