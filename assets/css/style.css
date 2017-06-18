@@ -113,45 +113,88 @@ footer {
 	position: absolute;
 }
 
-/* To move a homepage display element from center spot to left spot. */
-.display-element.horizTranslate {
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
-  left: -15% !important;
-}
+/* Move left functionality */
+	/* To move a homepage display element from center spot to left spot. */
+	.display-element.horizTranslate {
+	  -webkit-transition: 0.5s;
+	  -moz-transition: 0.5s;
+	  -ms-transition: 0.5s;
+	  -o-transition: 0.5s;
+	  transition: 0.5s;
+	  left: -15% !important;
+	}
 
-/* To move a homepage display element from right spot to center spot. */
-.display-element.horizTranslate2 {
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
-  left: 35% !important;
-}
+	/* To move a homepage display element from right spot to center spot. */
+	.display-element.horizTranslate2 {
+	  -webkit-transition: 0.5s;
+	  -moz-transition: 0.5s;
+	  -ms-transition: 0.5s;
+	  -o-transition: 0.5s;
+	  transition: 0.5s;
+	  left: 35% !important;
+	}
 
-/* To move a homepage display element from off screen spot to right spot. */
-.display-element.horizTranslate3 {
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
-  left: 85% !important;
-}
+	/* To move a homepage display element from off screen spot to right spot. */
+	.display-element.horizTranslate3 {
+	  -webkit-transition: 0.5s;
+	  -moz-transition: 0.5s;
+	  -ms-transition: 0.5s;
+	  -o-transition: 0.5s;
+	  transition: 0.5s;
+	  left: 85% !important;
+	}
 
-/* To move a homepage display element from left spot to off screen. */
-.display-element.horizTranslate4 {
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
-  left: -45% !important;
-}
+	/* To move a homepage display element from left spot to off screen. */
+	.display-element.horizTranslate4 {
+	  -webkit-transition: 0.5s;
+	  -moz-transition: 0.5s;
+	  -ms-transition: 0.5s;
+	  -o-transition: 0.5s;
+	  transition: 0.5s;
+	  left: -45% !important;
+	}
+
+
+/* Move right functionality */
+	/* To move a homepage display element from center spot to right spot. */
+	.display-element.horizTranslate5 {
+	  -webkit-transition: 0.5s;
+	  -moz-transition: 0.5s;
+	  -ms-transition: 0.5s;
+	  -o-transition: 0.5s;
+	  transition: 0.5s;
+	  left: 85% !important;
+	}
+
+	/* To move a homepage display element from right spot to off screen. */
+	.display-element.horizTranslate6 {
+	  -webkit-transition: 0.5s;
+	  -moz-transition: 0.5s;
+	  -ms-transition: 0.5s;
+	  -o-transition: 0.5s;
+	  transition: 0.5s;
+	  left: 100% !important;
+	}
+
+	/* To move a homepage display element from off screen spot to left spot. */
+	.display-element.horizTranslate7 {
+	  -webkit-transition: 0.5s;
+	  -moz-transition: 0.5s;
+	  -ms-transition: 0.5s;
+	  -o-transition: 0.5s;
+	  transition: 0.5s;
+	  left: -15% !important;
+	}
+
+	/* To move a homepage display element from left spot to center. */
+	.display-element.horizTranslate8 {
+	  -webkit-transition: 0.5s;
+	  -moz-transition: 0.5s;
+	  -ms-transition: 0.5s;
+	  -o-transition: 0.5s;
+	  transition: 0.5s;
+	  left: 35% !important;
+	}
 
 
 

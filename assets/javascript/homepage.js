@@ -33,6 +33,7 @@ function loadDisplay(){
 
 // Removes class from a particular HTML object
 function removeClass(){
+	/*
 	if (optionsArray[indexSelected + 1] != null){
 		$('#display' + indexSelected).removeClass("horizTranslate");
 	};
@@ -46,6 +47,14 @@ function removeClass(){
 	if (indexSelected > 0){
 		$('#display' + (indexSelected - 1)).removeClass("horizTranslate4");
 	}
+
+	// This is placed in the removeClass function because it needs to happen after the classes are removed. 
+	indexSelected++;
+	*/
+	$('.display-element').removeClass("horizTranslate");
+	$('.display-element').removeClass("horizTranslate2");
+	$('.display-element').removeClass("horizTranslate3");
+	$('.display-element').removeClass("horizTranslate4");
 
 	// This is placed in the removeClass function because it needs to happen after the classes are removed. 
 	indexSelected++;
@@ -70,6 +79,33 @@ function moveLeft(){
 		if (optionsArray[indexSelected + 2] != null){
 			document.getElementById("display" + (indexSelected + 2)).classList.add('horizTranslate3');
 			$('#display' + (indexSelected + 2)).css("left", "85%");
+			
+		}
+
+		classPull = setTimeout(removeClass, 600)
+
+	}
+};
+
+// Allows user to scroll right through quiz choices. 
+function moveRight(){
+	if (optionsArray[indexSelected - 1] != null){
+		if (indexSelected > 0){
+		document.getElementById("display" + (indexSelected - 1)).classList.add('horizTranslate8');
+		$('#display' + (indexSelected - 1)).css("left", "35%");
+		}
+
+		document.getElementById("display" + indexSelected).classList.add('horizTranslate5');
+		$('#display' + indexSelected).css("left", "85%");
+		
+		document.getElementById("display" + (indexSelected + 1)).classList.add('horizTranslate6');
+		$('#display' + (indexSelected + 1)).css("left", "100%");
+		
+
+		// If a third element is available it should be moved onto the screen.
+		if (optionsArray[indexSelected + 2] != null){
+			document.getElementById("display" + (indexSelected + 2)).classList.add('horizTranslate7');
+			$('#display' + (indexSelected + 2)).css("left", "-15%");
 			
 		}
 
