@@ -17,7 +17,7 @@ function loadDisplay(){
 	for (var i = 0; i < optionsArray.length; i++){
 		console.log("function running")
 		$('#quiz-option-display').append("<div class='display-element' id='display" + i +"'></div>")
-		$('.display-element').html("<p>Working</p>")
+		$('#display' + i).html("<img class='home-image' src='assets/images/" + optionsArray[i].thumbnail + "'><h3 class='home-header'>" + optionsArray[i].name + "</h3>");
 	}
 	
 }
