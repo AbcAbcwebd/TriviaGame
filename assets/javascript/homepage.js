@@ -21,6 +21,14 @@ var clickable = true;
 var rightQueue = 0;
 var leftQueue = 0;
 
+// This prevents arrow keys from scrolling/changing positioning of screen
+window.addEventListener("keydown", function(e) {
+    // space and arrow keys
+    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}, false);
+
 // This creates a display on the homepage that allows the user to select a quiz.
 function loadDisplay(){
 	for (var i = 0; i < optionsArray.length; i++){
@@ -124,6 +132,11 @@ function moveRight(){
 	}; */
 }
 
+// What happens when a user selects a quiz
+function selectQuiz(){
+	window.location.replace(optionsArray[indexSelected].link);
+}
+
 $(document).ready(function() {
 	function myFunction() {
     	alert("You pressed a key inside the input field");
@@ -139,6 +152,8 @@ $(document).keyup(function(){
 		        moveRight();
 		    } else if (e.keyCode == '39') {
 		    	moveLeft();
+		    } else if (e.keyCode == '13') {
+		    	selectQuiz();
 		    }
 
 		// The move functions can only process one request at a time. If they recieve more than one request at a time, the move animations may not work properly. 
@@ -182,3 +197,18 @@ function runQueue(){
 	};
 };
 */
+
+$(document).ready(function(){
+    $('#button-left').click(function(){
+        moveRight();
+    });
+
+    $('#button-right').click(function(){
+        moveLeft();
+    });
+
+    $('#button-center').click(function(){
+        selectQuiz();
+    });
+});
+
