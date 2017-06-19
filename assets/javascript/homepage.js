@@ -14,6 +14,13 @@ var indexSelected = 0;
 
 var optionsArray = [fourOJuly, movies, spaceTravel];
 
+// Helps prevent one anim cycle from initiating before the previous is complete. 
+var clickable = true;
+
+// These variables track movements that need to happen but that have not yet been executed
+var rightQueue = 0;
+var leftQueue = 0;
+
 // This creates a display on the homepage that allows the user to select a quiz.
 function loadDisplay(){
 	for (var i = 0; i < optionsArray.length; i++){
@@ -33,7 +40,7 @@ function loadDisplay(){
 
 // Removes class from a particular HTML object
 function removeClass(){
-//	console.log("Clear initiated");
+	console.log("Clear initiated");
 	$('.display-element').removeClass("horizTranslate");
 	$('.display-element').removeClass("horizTranslate2");
 	$('.display-element').removeClass("horizTranslate3");
@@ -43,13 +50,17 @@ function removeClass(){
 	$('.display-element').removeClass("horizTranslate6");
 	$('.display-element').removeClass("horizTranslate7");
 	$('.display-element').removeClass("horizTranslate8");
+
+	clickable = true;
+//	runQueue();
 	
 }
 
 // Allows user to scroll left through quiz choices. 
 function moveLeft(){
 	if (optionsArray[indexSelected + 1] != null){
-//		console.log("Left anim initiated");
+		clickable = false;
+		console.log("Left anim initiated");
 		if (indexSelected > 0){
 			document.getElementById("display" + (indexSelected - 1)).classList.add('horizTranslate4');
 			$('#display' + (indexSelected - 1)).css("left", "-45%");
@@ -73,13 +84,17 @@ function moveLeft(){
 		console.log(indexSelected);
 		classPull = setTimeout(removeClass, 600);
 
-	}
+	} /* else if (leftQueue > 0){
+		leftQueue--;
+	}; */
 };
 
 // Allows user to scroll right through quiz choices. 
 function moveRight(){
-//	console.log("Right anim initiated");
+	console.log("Right anim initiated");
 	if (optionsArray[indexSelected - 1] != null){
+		clickable = false;
+		console.log("Move conditions met")
 		if (indexSelected > 0){
 		document.getElementById("display" + (indexSelected - 1)).classList.add('horizTranslate8');
 		$('#display' + (indexSelected - 1)).css("left", "35%");
@@ -103,7 +118,10 @@ function moveRight(){
 		indexSelected--;
 		classPull = setTimeout(removeClass, 600);
 
-	}
+	} /*else if (rightQueue > 0){
+		console.log("Move conditions not met.");
+		rightQueue--;
+	}; */
 }
 
 $(document).ready(function() {
@@ -113,15 +131,54 @@ $(document).ready(function() {
 });
 
 $(document).keyup(function(){
-	console.log("Key pressed");
 	document.onkeydown = checkKey;
     function checkKey(e) {
-	    if (e.keyCode == '37') {
-	    	console.log("Key pressed");
-	        moveRight();
-	    } else if (e.keyCode == '39') {
-	    	console.log("Key pressed");
-	    	moveLeft();
-	    }
+    	console.log(clickable);
+    	if (clickable){
+		    if (e.keyCode == '37') {
+		        moveRight();
+		    } else if (e.keyCode == '39') {
+		    	moveLeft();
+		    }
+
+		// The move functions can only process one request at a time. If they recieve more than one request at a time, the move animations may not work properly. 
+		// This functionality allows excess requests to be stored to a queue and executed once the move functions are available.
+		// The queue total is capped at three in order to avoid a 'hijacked screen' scenario in which a user has pressed the arrow keys many times and now must wait for the screen to catch up. 
+		} /*else if (rightQueue + leftQueue < 3){
+			console.log("Function overloaded")
+			if (e.keyCode == '37') {
+		        rightQueue++;
+		        runQueue();
+		    } else if (e.keyCode == '39') {
+		    	leftQueue++;
+		    	runQueue();
+		    }
+		}
+		console.log("Right queue: " + rightQueue);
+		console.log("Left queue: " + leftQueue);
+		*/
 	};
 });
+
+/*
+// This will executed movement requests from the queue if move functionality is available.
+function runQueue(){
+	if (clickable && rightQueue > 0){
+		console.log("Running right queue.")
+		moveRight();
+		rightQueue--;
+	};
+
+	if (clickable && leftQueue > 0){
+		console.log("Running left queue.")
+		moveLeft();
+		leftQueue--;
+	};
+
+	// If there are still movements in the queue, the function is called again.
+	if (rightQueue > 0 || leftQueue > 0){
+//		maintainQueue = setTimeout(runQueue, 200);
+		runQueue();
+	};
+};
+*/
