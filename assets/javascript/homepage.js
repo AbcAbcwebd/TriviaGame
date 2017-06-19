@@ -48,7 +48,6 @@ function loadDisplay(){
 
 // Removes class from a particular HTML object
 function removeClass(){
-	console.log("Clear initiated");
 	$('.display-element').removeClass("horizTranslate");
 	$('.display-element').removeClass("horizTranslate2");
 	$('.display-element').removeClass("horizTranslate3");
@@ -68,7 +67,6 @@ function removeClass(){
 function moveLeft(){
 	if (optionsArray[indexSelected + 1] != null){
 		clickable = false;
-		console.log("Left anim initiated");
 		if (indexSelected > 0){
 			document.getElementById("display" + (indexSelected - 1)).classList.add('horizTranslate4');
 			$('#display' + (indexSelected - 1)).css("left", "-45%");
@@ -89,7 +87,6 @@ function moveLeft(){
 		}
 
 		indexSelected++;
-		console.log(indexSelected);
 		classPull = setTimeout(removeClass, 600);
 
 	} /* else if (leftQueue > 0){
@@ -99,10 +96,8 @@ function moveLeft(){
 
 // Allows user to scroll right through quiz choices. 
 function moveRight(){
-	console.log("Right anim initiated");
 	if (optionsArray[indexSelected - 1] != null){
 		clickable = false;
-		console.log("Move conditions met")
 		if (indexSelected > 0){
 		document.getElementById("display" + (indexSelected - 1)).classList.add('horizTranslate8');
 		$('#display' + (indexSelected - 1)).css("left", "35%");
@@ -137,16 +132,9 @@ function selectQuiz(){
 	window.location.replace(optionsArray[indexSelected].link);
 }
 
-$(document).ready(function() {
-	function myFunction() {
-    	alert("You pressed a key inside the input field");
-	}
-});
-
 $(document).keyup(function(){
 	document.onkeydown = checkKey;
     function checkKey(e) {
-    	console.log(clickable);
     	if (clickable){
 		    if (e.keyCode == '37') {
 		        moveRight();
