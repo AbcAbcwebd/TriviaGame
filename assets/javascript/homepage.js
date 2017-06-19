@@ -104,10 +104,43 @@ function moveRight(){
 	}
 }
 
-function countLeft(){
-	
-};
+$(document).ready(function() {
+	function myFunction() {
+    	alert("You pressed a key inside the input field");
+	}
+});
 
-function countRight(){
-	
+$(document).keyup(function(){
+	document.onkeydown = checkKey;
+    console.log("Key pressed");
+    function checkKey(e) {
+	    if (e.keyCode == '37') {
+	       console.log("Left arrow");
+	    };
+	};
+});
+
+
+/*
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '38') {
+        // up arrow
+    }
+    else if (e.keyCode == '40') {
+        // down arrow
+    }
+    else if (e.keyCode == '37') {
+       // left arrow
+    }
+    else if (e.keyCode == '39') {
+       // right arrow
+    }
+
 }
+
+*/
