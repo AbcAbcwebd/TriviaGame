@@ -33,6 +33,7 @@ function loadDisplay(){
 
 // Removes class from a particular HTML object
 function removeClass(){
+//	console.log("Clear initiated");
 	$('.display-element').removeClass("horizTranslate");
 	$('.display-element').removeClass("horizTranslate2");
 	$('.display-element').removeClass("horizTranslate3");
@@ -48,9 +49,10 @@ function removeClass(){
 // Allows user to scroll left through quiz choices. 
 function moveLeft(){
 	if (optionsArray[indexSelected + 1] != null){
+//		console.log("Left anim initiated");
 		if (indexSelected > 0){
-		document.getElementById("display" + (indexSelected - 1)).classList.add('horizTranslate4');
-		$('#display' + (indexSelected - 1)).css("left", "-45%");
+			document.getElementById("display" + (indexSelected - 1)).classList.add('horizTranslate4');
+			$('#display' + (indexSelected - 1)).css("left", "-45%");
 		}
 
 		document.getElementById("display" + indexSelected).classList.add('horizTranslate');
@@ -76,6 +78,7 @@ function moveLeft(){
 
 // Allows user to scroll right through quiz choices. 
 function moveRight(){
+//	console.log("Right anim initiated");
 	if (optionsArray[indexSelected - 1] != null){
 		if (indexSelected > 0){
 		document.getElementById("display" + (indexSelected - 1)).classList.add('horizTranslate8');
@@ -98,7 +101,6 @@ function moveRight(){
 		}
 
 		indexSelected--;
-		console.log(indexSelected);
 		classPull = setTimeout(removeClass, 600);
 
 	}
@@ -111,36 +113,15 @@ $(document).ready(function() {
 });
 
 $(document).keyup(function(){
+	console.log("Key pressed");
 	document.onkeydown = checkKey;
-    console.log("Key pressed");
     function checkKey(e) {
 	    if (e.keyCode == '37') {
-	       console.log("Left arrow");
-	    };
+	    	console.log("Key pressed");
+	        moveRight();
+	    } else if (e.keyCode == '39') {
+	    	console.log("Key pressed");
+	    	moveLeft();
+	    }
 	};
 });
-
-
-/*
-document.onkeydown = checkKey;
-
-function checkKey(e) {
-
-    e = e || window.event;
-
-    if (e.keyCode == '38') {
-        // up arrow
-    }
-    else if (e.keyCode == '40') {
-        // down arrow
-    }
-    else if (e.keyCode == '37') {
-       // left arrow
-    }
-    else if (e.keyCode == '39') {
-       // right arrow
-    }
-
-}
-
-*/
