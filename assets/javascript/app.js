@@ -128,6 +128,13 @@ $(document).ready(function(){
 		endQuestion();
 	});
 
+	$("h1").click(function(){ 
+		var leavePage = window.confirm("Are you sure you want to exit the quiz?");
+		if (leavePage) {
+			window.location.replace('index.html');
+		}
+	});
+
 });
 
 // What happens once the question ends. 

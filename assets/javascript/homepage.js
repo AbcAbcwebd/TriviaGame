@@ -156,6 +156,8 @@ $(document).keyup(function(){
 		    	selectQuiz();
 		    }
 
+// I expeirimented with a process to handle 'overload' requests (requests made while a previous process was already running)
+// The functionality has not yet been perfected, however.
 		// The move functions can only process one request at a time. If they recieve more than one request at a time, the move animations may not work properly. 
 		// This functionality allows excess requests to be stored to a queue and executed once the move functions are available.
 		// The queue total is capped at three in order to avoid a 'hijacked screen' scenario in which a user has pressed the arrow keys many times and now must wait for the screen to catch up. 
@@ -209,6 +211,12 @@ $(document).ready(function(){
 
     $('#button-center').click(function(){
         selectQuiz();
+    });
+
+    $('.display-element').click(function(){
+        var localID = this.id;
+        var localIndex = localID.split('y')[1];
+        window.location.replace(optionsArray[localIndex].link);
     });
 });
 
